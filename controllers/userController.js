@@ -9,7 +9,6 @@ export const registrasiController = (req, res) => {
 
 export const dbregistrasiController = (req, res) => {
     const name = req.body.username
-
     const email = req.body.email
     const password = req.body.pass
 
