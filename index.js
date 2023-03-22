@@ -1,25 +1,60 @@
-import express, { urlencoded } from 'express';
-import session from 'express-session';
+import express, { urlencoded } from "express";
+import session from "express-session";
 import path from "path";
 import { fileURLToPath } from "url";
-import { aboutController, adminLoginController, cafe2Controller, cafeController, editController, indexController } from './controllers/indexController.js';
-import { deleteController, submitController, ubahController, updateController } from './controllers/submitController.js';
-import { cekUserController, dbloginController, dbregistrasiController, loginController, logoutController, registrasiController } from './controllers/userController.js';
-import { adminController, adminFormController, cekAdminController, dbadminController } from './controllers/adminController.js';
-import { shopChartController, transaksiController, trscUserController } from './controllers/checkoutController.js';
-import { tambahController, tarikController, trscAdminController, updateItemController } from './controllers/transaksiController.js';
+import {
+  aboutController,
+  adminLoginController,
+  cafe2Controller,
+  cafeController,
+  editController,
+  indexController,
+} from "./controllers/indexController.js";
+import {
+  deleteController,
+  submitController,
+  ubahController,
+  updateController,
+} from "./controllers/submitController.js";
+import {
+  cekUserController,
+  dbloginController,
+  dbregistrasiController,
+  loginController,
+  logoutController,
+  registrasiController,
+} from "./controllers/userController.js";
+import {
+  adminController,
+  adminFormController,
+  cekAdminController,
+  dbadminController,
+} from "./controllers/adminController.js";
+import {
+  shopChartController,
+  transaksiController,
+  trscUserController,
+} from "./controllers/checkoutController.js";
+import {
+  tambahController,
+  tarikController,
+  trscAdminController,
+  updateItemController,
+} from "./controllers/transaksiController.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(urlencoded({ extended: true }));
-app.use(session({
-    secret: 'rahacia'
-}));
+app.use(
+  session({
+    secret: "rahacia",
+  })
+);
 app.set("view engine", "ejs");
-app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, '/views')));
+app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "/views")));
 
 app.get("/index", indexController);
 app.get("/about", aboutController);
@@ -57,4 +92,4 @@ app.get("/updateItem/:id", updateItemController);
 app.post("/items/beli", transaksiController);
 
 app.listen(3000);
-console.log('Yeay!');
+console.log("Yeay!");
